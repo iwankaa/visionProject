@@ -64,12 +64,31 @@ train_counts = [len(os.listdir(os.path.join(train_dir, cls))) for cls in class_n
 val_counts = [len(os.listdir(os.path.join(val_dir, cls))) for cls in class_names]
 test_counts = [len(os.listdir(os.path.join(test_dir, cls))) for cls in class_names]
 
+# Вивід кількості зображень у кожному класі для кожної множини
+print("Кількість зображень у кожному класі:")
+for i, cls in enumerate(class_names):
+    print(f"Клас {cls}:")
+    print(f"  Train: {train_counts[i]}")
+    print(f"  Validation: {val_counts[i]}")
+    print(f"  Test: {test_counts[i]}")
+
+# Загальна кількість зображень у кожній множині
+total_train = sum(train_counts)
+total_val = sum(val_counts)
+total_test = sum(test_counts)
+total_images = total_train + total_val + total_test
+
+print("\nЗагальна кількість зображень:")
+print(f"Train: {total_train} ({total_train / total_images * 100:.2f}%)")
+print(f"Validation: {total_val} ({total_val / total_images * 100:.2f}%)")
+print(f"Test: {total_test} ({total_test / total_images * 100:.2f}%)")
+
+# Візуалізація розподілу зображень
 fig, ax = plt.subplots(figsize=(10, 5))
 
 ax.bar(class_names, train_counts, color='blue', label="Train")
 ax.bar(class_names, test_counts, color='green', label="Test")
 ax.bar(class_names, val_counts, color='orange', label="Validation")
-
 
 plt.xticks(rotation=45)
 plt.ylabel("Number of images")
