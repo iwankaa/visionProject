@@ -64,9 +64,9 @@ train_counts = [len(os.listdir(os.path.join(train_dir, cls))) for cls in class_n
 val_counts = [len(os.listdir(os.path.join(val_dir, cls))) for cls in class_names]
 test_counts = [len(os.listdir(os.path.join(test_dir, cls))) for cls in class_names]
 
-print("Кількість зображень у кожному класі:")
+print("Number of images in each class:")
 for i, cls in enumerate(class_names):
-    print(f"Клас {cls}:")
+    print(f"Class {cls}:")
     print(f"  Train: {train_counts[i]}")
     print(f"  Validation: {val_counts[i]}")
     print(f"  Test: {test_counts[i]}")
@@ -76,7 +76,7 @@ total_val = sum(val_counts)
 total_test = sum(test_counts)
 total_images = total_train + total_val + total_test
 
-print("\nЗагальна кількість зображень:")
+print("\nTotal number of images:")
 print(f"Train: {total_train} ({total_train / total_images * 100:.2f}%)")
 print(f"Validation: {total_val} ({total_val / total_images * 100:.2f}%)")
 print(f"Test: {total_test} ({total_test / total_images * 100:.2f}%)")
